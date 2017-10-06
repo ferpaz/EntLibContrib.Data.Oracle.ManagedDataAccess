@@ -339,9 +339,23 @@ namespace EntLibContrib.Data.Oracle.ManagedDataAccess
                 // of "cur_OUT"
                 if (!CommandHasCursorParameter(command))
                 {
+                    using (DatabaseConnectionWrapper wrapper = GetWrappedConnection())
+                    {
+                        using (DbCommand cmd = base.GetStoredProcCommand(command.CommandText))
+                        {
+                            PrepareCommand(cmd, wrapper.Connection);
+                            DeriveParameters(cmd);
+                            foreach (var param in cmd.Parameters)
+                            {
+                                if ((param as OracleParameter).OracleDbType == OracleDbType.RefCursor)
+                                {
 #pragma warning disable 612, 618
-                    AddParameter(command as OracleCommand, RefCursorName, OracleDbType.RefCursor, 0, ParameterDirection.Output, true, 0, 0, String.Empty, DataRowVersion.Default, Convert.DBNull);
+                                    AddParameter(command as OracleCommand, RefCursorName, OracleDbType.RefCursor, 0, ParameterDirection.Output, true, 0, 0, String.Empty, DataRowVersion.Default, Convert.DBNull);
 #pragma warning restore 612, 618
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
