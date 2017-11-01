@@ -329,7 +329,9 @@ namespace EntLibContrib.Data.TestSupport
         {
             int totalRows = TotalRows();
             TransactionOptions options = new TransactionOptions();
-            options.IsolationLevel = IsolationLevel.ReadUncommitted;
+            //Fix test Oracle does not support level uncommitted, and throw exception
+            //https://docs.oracle.com/cd/B19306_01/server.102/b14220/consist.htm#sthref1972
+            options.IsolationLevel = IsolationLevel.ReadCommitted;
             using (TransactionScope scope1 = new TransactionScope(TransactionScopeOption.RequiresNew, options))
             {
                 Assert.AreEqual(totalRows, TotalRows());
