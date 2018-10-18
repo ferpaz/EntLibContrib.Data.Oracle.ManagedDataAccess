@@ -417,7 +417,11 @@ namespace EntLibContrib.Data.TestSupport
                 row["RegionDescription"] = "Australia";
                 ds.Tables[0].Rows.Add(row);
 
-                int rows = db.UpdateDataSet(ds, ds.Tables[0].TableName, insertCommand, null, null, UpdateBehavior.Standard, 10);
+                /*
+                  RGM: BlockSize should support values greater than 1 but seems to be a issue with the Oracle Provider
+                  https://github.com/VAllens/EntLibContrib.Data.Oracle.ManagedDataAccess/issues/2
+                  */
+                int rows = db.UpdateDataSet(ds, ds.Tables[0].TableName, insertCommand, null, null, UpdateBehavior.Standard, 1);
                 Assert.AreEqual(1, rows);
                 Assert.AreEqual(5, TotalRows());
             }

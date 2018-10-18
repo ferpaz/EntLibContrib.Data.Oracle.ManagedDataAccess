@@ -29,7 +29,7 @@ namespace EntLibContrib.Data.Oracle.ManagedDataAccess.Tests
         protected override void Arrange()
         {
             EnvironmentHelper.AssertOracleClientIsInstalled();
-            database = new OracleDatabase("Data Source=XE;User id=system;Password=admin");
+            database = new OracleDatabase("Data Source=LOCALHOST:1521/ORCL;User id=ENTLIBTEST;Password=abc123");
         }
 
         [TestMethod]

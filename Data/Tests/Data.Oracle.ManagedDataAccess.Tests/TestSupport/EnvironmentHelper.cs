@@ -32,9 +32,9 @@ namespace EntLibContrib.Data.Oracle.ManagedDataAccess.Tests.TestSupport
                     conn.Open();
                     conn.Close();
                 }
-                catch (Exception ex)
+               catch (Exception ex)
                 {
-                    if (ex.Message != null && ex.Message.Contains("Data Source=XE;User id=system;Password=admin"))
+                    if (ex.Message != null && ex.Message.Contains("Data Source=LOCALHOST:1521/ORCL;User id=ENTLIBTEST"))
                     {
                         oracleClientIsInstalled = false;
                         oracleClientNotInstalledErrorMessage = ex.Message;

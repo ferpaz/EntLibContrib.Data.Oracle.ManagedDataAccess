@@ -18,7 +18,7 @@ namespace EntLibContrib.Data.Oracle.ManagedDataAccess.Tests.TestSupport
 {
     public static class OracleTestConfigurationSource
     {
-        public const string OracleConnectionString = "Data Source=XE;User id=system;Password=admin";
+        public const string OracleConnectionString = "Data Source=LOCALHOST:1521/ORCL;User id=ENTLIBTEST;Password=abc123";
         public const string OracleConnectionStringName = "OracleTest";
         public const string OracleProviderName = "Oracle.ManagedDataAccess.Client";
 
@@ -35,6 +35,7 @@ namespace EntLibContrib.Data.Oracle.ManagedDataAccess.Tests.TestSupport
             connectionStrings.ConnectionStrings.Add(connectionString);
 
             configSource.Add("connectionStrings", connectionStrings);
+
             return configSource;
         }
     }

@@ -18,16 +18,13 @@ namespace EntLibContrib.Data.TestSupport
 {
     public class TestConfigurationSource
     {
-        public const string NorthwindDummyUser = "system";
-        public const string NorthwindDummyPassword = "admin";
-
         public static DictionaryConfigurationSource CreateConfigurationSource()
         {
             DictionaryConfigurationSource source = new DictionaryConfigurationSource();
 
             DatabaseSettings settings = new DatabaseSettings();
-            settings.DefaultDatabase = "Service_Dflt";
-            settings.ProviderMappings.Add(new DbProviderMapping("Oracle.ManagedDataAccess.Client", "EntLibContrib.Data.Oracle.ManagedDataAccess.OracleDatabase, EntLibContrib.Data.Oracle.ManagedDataAccess, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"));
+            settings.DefaultDatabase = "OracleTest";
+            settings.ProviderMappings.Add(new DbProviderMapping("Oracle.ManagedDataAccess.Client", "EntLibContrib.Data.Oracle.ManagedDataAccess.OracleDatabase, EntLibContrib.Data.Oracle.ManagedDataAccess, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null"));
 
             OracleConnectionSettings oracleConnectionSettings = new OracleConnectionSettings();
             OracleConnectionData data = new OracleConnectionData();
