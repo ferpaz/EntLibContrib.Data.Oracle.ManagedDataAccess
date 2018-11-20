@@ -254,6 +254,24 @@
             <para>The <see cref="T:System.Data.IDbTransaction"/> to execute the command in.</para>
             </param>
         </member>
+        <member name="M:EntLibContrib.Data.Oracle.ManagedDataAccess.OracleDatabase.ExecuteScalar(System.Data.Common.DbCommand)">
+            <summary>
+             Executes the command and returns the first column of the first row in the result
+             set returned by the query. Extra columns or rows are ignored.
+            </summary>
+            <param name="command"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EntLibContrib.Data.Oracle.ManagedDataAccess.OracleDatabase.ExecuteScalar(System.Data.Common.DbCommand,System.Data.Common.DbTransaction)">
+            <summary>
+            Executes the command within a transaction, and returns the first column of the
+            first row in the result set returned by the query. Extra columns or rows are
+            ignored.
+            </summary>
+            <param name="command"></param>
+            <param name="transaction"></param>
+            <returns></returns>
+        </member>
         <member name="M:EntLibContrib.Data.Oracle.ManagedDataAccess.OracleDatabase.GetParameterValue(System.Data.Common.DbCommand,System.String)">
             <summary>
             Gets a parameter value.

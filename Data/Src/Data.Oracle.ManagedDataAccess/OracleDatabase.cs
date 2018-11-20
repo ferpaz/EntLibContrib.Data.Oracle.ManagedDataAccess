@@ -261,6 +261,33 @@ namespace EntLibContrib.Data.Oracle.ManagedDataAccess
         }
 
         /// <summary>
+        ///  Executes the command and returns the first column of the first row in the result
+        ///  set returned by the query. Extra columns or rows are ignored.
+        /// </summary>
+        /// <param name="command"></param>
+        /// <returns></returns>
+        public override object ExecuteScalar(DbCommand command)
+        {
+            PrepareCWRefCursor(command);
+            return base.ExecuteScalar(command);
+        }
+
+        /// <summary>
+        /// Executes the command within a transaction, and returns the first column of the
+        /// first row in the result set returned by the query. Extra columns or rows are
+        /// ignored.
+        /// </summary>
+        /// <param name="command"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
+        public override object ExecuteScalar(DbCommand command, DbTransaction transaction)
+        {
+            PrepareCWRefCursor(command);
+            return base.ExecuteScalar(command, transaction);
+        }
+
+
+        /// <summary>
         /// Gets a parameter value.
         /// </summary>
         /// <param name="command">The command that contains the parameter.</param>
